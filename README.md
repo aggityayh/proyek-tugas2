@@ -23,7 +23,7 @@ Semua langkah di atas akan membantu Anda memulai proyek Django baru dan melakuka
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 Jawaban:
 
-![Alt text](image.png)
+![Alt text](foto/image.png)
 
 Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Jawaban:
@@ -46,19 +46,19 @@ Perbedaan utama antara ketiganya terletak pada bagaimana mereka mengelola alur d
 
 Screenshot POSTMAN:
 1. HTML
-![Alt text](image-1.png)
-![Alt text](image-2.png)
+![Alt text](foto/image-1.png)
+![Alt text](foto/image-2.png)
 
 2. XML
-![Alt text](image-3.png)
+![Alt text](foto/image-3.png)
 
 3. JSON
-![Alt text](image-4.png)
+![Alt text](foto/image-4.png)
 
 4. XML by ID
-![Alt text](image-6.png)
+![Alt text](foto/image-6.png)
 
 5. JSON by ID
-![Alt text](image-5.png)
+![Alt text](foto/image-5.png)
 
 --- END TUGAS 3 ---
