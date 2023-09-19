@@ -12,7 +12,7 @@ from django.core import serializers
 
 def show_main(request):
     products = Product.objects.all()
-    total_items = Product.count()
+    total_items = products.count()
 
     context = {
         'name': 'Aggitya Yosafat Hutabarat',
