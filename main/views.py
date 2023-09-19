@@ -12,11 +12,13 @@ from django.core import serializers
 
 def show_main(request):
     products = Product.objects.all()
+    total_items = Product.count()
 
     context = {
         'name': 'Aggitya Yosafat Hutabarat',
         'class': 'PBP B',
-        'products': products
+        'products': products,
+        'total_items': total_items
     }
 
     return render(request, "main.html", context)
