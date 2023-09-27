@@ -21,6 +21,8 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from django.shortcuts import get_object_or_404
+
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
@@ -47,6 +49,31 @@ def create_product(request):
 
     context = {'form': form}
     return render(request, "create_product.html", context)
+
+def increase_amount(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.amount += 1
+    product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def decrease_amount(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    
+    # Mengurangi jumlah barang sebanyak satu jika barang ada 
+    if product.amount > 0:
+        product.amount -= 1
+        product.save()
+        
+    # Jika jumlah mencapai 0, product akan dihapus dari keranjang
+    if product.amount == 0:
+        product.delete()
+    
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
 
 def show_xml(request):
     data = Product.objects.all()
