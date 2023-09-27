@@ -105,3 +105,39 @@ Screenshot POSTMAN:
 ![Alt text](foto/image-5.png)
 
 --- END TUGAS 3 ---
+
+Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+UserCreationForm pada Django adalah modul bawaan atau importan yang memfasilitasi formulir pendaftaran pengguna. Modul ini digunakan untuk menghemat waktu dan memastikan validasi data pengguna. Dengan UserCreationForm, kita dapat fokus pada pengembangan fitur khusus aplikasi, tanpa perlu menulis kode pembuatan formulir dari awal. Formulir ini mencakup username, password, dan konfirmasi password. Kelebihannya juga termasuk kemampuan untuk menyesuaikan formulir dengan tambahan menu yang kita diperlukan. UserCreationForm menyimpan data pengguna dengan aman di database sesuai standar keamanan Django. Dengan demikian, UserCreationForm adalah alat yang sangat berguna untuk mengoptimalkan proses pendaftaran pengguna di situs web Django.
+
+
+Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Autentikasi berkaitan dengan proses verifikasi identitas pengguna atau user. Autentikasi memastikan bahwa yang mengisi input data diri adalah mereka yangn memang sudah pernah mendaftarkan diri mereka. Django menyediakan sistem autentikasi bawaan yang memungkinkan pengguna mendaftar, masuk, dan mengelola akun mereka secara personal.
+Otorisasi berkaitan dengan hak akses pengguna setelah mereka terautentikasi. Otorisasi menentukan apa yang dapat atau tidak dapat dilakukan pengguna di dalam aplikasi berdasarkan peran atau izin yang mereka miliki. Django memiliki sistem otorisasi yang kuat yang memungkinkan pengembang mengontrol akses ke bagian-bagian tertentu dari aplikasi.
+Kedua hal diatas penting karena mereka bekerja sama untuk menjaga keamanan dan privasi pengguna aplikasi. Autentikasi memastikan bahwa hanya pengguna yang sah yang dapat mengakses akun mereka, sementara otorisasi memastikan bahwa setiap pengguna memiliki hak akses yang sesuai dengan perannya. Dengan cara ini, Django membantu pengembang untuk membangun aplikasi yang aman dan terstruktur dengan baik.
+
+
+Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+
+Cookies dalam konteks aplikasi web adalah file teks kecil yang disimpan di perangkat pengguna saat mereka berinteraksi dengan situs web dan akan diambil kembali nantinya saat data file tersebut dibutuhkan. Cookies membuat aplikasi mengingat preferensi, personalisasi, dan/atau status pengguna selama mengakses aplikasi web. 
+Django menggunakan cookies untuk mengelola data dari setiap sesi pengaksesan web oleh pengguna. Ketika pengguna pertama kali mengunjungi situs web, Django akan membuat cookie unik untuk pengguna tersebut. Cookie akan mengidentifikasi aktivitas pengguna dan memproses data yang dianggap unik ke server. Informasi seperti status login atau preferensi, akan disimpan secara aman di server.
+Setiap kali pengguna melakukan permintaan ke situs aplikasi web, data cookies akan dikirimkan ke server untuk mengidentifikasi aktivitas pengguna tersebut dan memberikan pengalaman yang lebih baik ke pengguna.
+
+
+Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Secara default, penggunaan cookies dalam pengembangan web memiliki beberapa lapisan keamanan, terutama jika digunakan dengan HTTPS. Namun, keamanannya juga sangat tergantung pada bagaimana cookies diimplementasikan dalam aplikasi. Namun berdasarkan informasi yang saya dapat, terdapat beberapa potensi resiko yang patut diwaspadai antara lain:
+1. Risiko Pencurian Data karena cookies dapat menjadi target potensial bagi penyerang yang mencoba mencuri informasi sensitif seperti token otentikasi atau informasi pribadi pengguna.
+2. Cross-Site Scripting (XSS), dimana terjadi jika aplikasi tidak mengimplementasikan langkah-langkah perlindungan yang memadai, sehingga cookies dapat menjadi rentan terhadap serangan XSS, dimana penyerang memasukkan skrip berbahaya yang dapat mencuri atau memanipulasi cookie.
+3. Cross-Site Request Forgery (CSRF) yang diakibatkan saat cookies yang tidak diatur dengan benar sehingga menyebabkan kerentanan CSRF, serangan dapat memaksa pengguna untuk melakukan tindakan yang tidak diinginkan tanpa sepengetahuan mereka.
+4. Session Hijacking atau Sidejacking hal ini terjadi jika koneksi tidak dienkripsi dengan baik, serangan dapat memantau atau mencuri cookie saat berkomunikasi dengan server, yang dapat memungkinkan akses ilegal ke sesi pengguna.
+5. Cookie Mismatch apabila pengaturan cookie yang tidak tepat akan dapat menyebabkan masalah dengan integritas sesi pengguna, memungkinkan serangan manipulasi sesi.
+6. Kebocoran Informasi dimana jika cookie mengandung informasi sensitif tanpa enkripsi atau tindakan keamanan tambahan, informasi tersebut dapat bocor jika cookie dicuri atau digunakan oleh pihak yang tidak berwenang.
+
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+
+
+--- START TUGAS 3 ---
