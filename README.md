@@ -127,6 +127,7 @@ Setiap kali pengguna melakukan permintaan ke situs aplikasi web, data cookies ak
 
 
 Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
 Secara default, penggunaan cookies dalam pengembangan web memiliki beberapa lapisan keamanan, terutama jika digunakan dengan HTTPS. Namun, keamanannya juga sangat tergantung pada bagaimana cookies diimplementasikan dalam aplikasi. Namun berdasarkan informasi yang saya dapat, terdapat beberapa potensi resiko yang patut diwaspadai antara lain:
 1. Risiko Pencurian Data karena cookies dapat menjadi target potensial bagi penyerang yang mencoba mencuri informasi sensitif seperti token otentikasi atau informasi pribadi pengguna.
 2. Cross-Site Scripting (XSS), dimana terjadi jika aplikasi tidak mengimplementasikan langkah-langkah perlindungan yang memadai, sehingga cookies dapat menjadi rentan terhadap serangan XSS, dimana penyerang memasukkan skrip berbahaya yang dapat mencuri atau memanipulasi cookie.
@@ -138,6 +139,15 @@ Secara default, penggunaan cookies dalam pengembangan web memiliki beberapa lapi
 
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
-
+1. Registrasi, Login, dan Logout:
+Untuk memungkinkan pengguna mengakses aplikasi dengan lancar, pertama-tama kita harus mengimplementasikan fungsi registrasi, login, dan logout. Dalam file views.py, kita akan mengimpor modul yang diperlukan seperti redirect, UserCreationForm, messages, authenticate, dan login. Selanjutnya, kita akan membuat fungsi register yang akan menghasilkan formulir registrasi secara otomatis dan membuat akun pengguna saat data dikirimkan melalui formulir. Kita juga perlu membuat file HTML baru bernama register.html di dalam folder main/templates untuk membuat tampilan formulir registrasi. Fungsi login akan mengautentikasi pengguna yang ingin masuk ke aplikasi. Kita juga akan membuat file HTML baru bernama login.html di dalam folder main/templates untuk tampilan halaman login. Terakhir, kita akan menambahkan fungsi logout yang akan mengatur mekanisme logout. Ini akan melibatkan menghapus sesi pengguna. Semua fungsi ini akan diimpor ke dalam urls.py, dan kita akan menambahkan path URL ke dalam urlpatterns.
+2. Membuat Akun Pengguna dengan Data Dummy:
+Langkah selanjutnya adalah membuat dua akun pengguna dan masing-masing akun akan memiliki tiga data dummy. Tahap ini akan melibatkan penggunaan model yang telah kita buat sebelumnya dalam aplikasi. Data dummy ini akan digunakan untuk menguji fungsionalitas aplikasi.
+![Alt text](foto/dummy1.png)
+![Alt text](foto/dummy2.png)
+3. Menghubungkan Model Item dengan User:
+Untuk menghubungkan model Item dengan User, kita akan memodifikasi model Item dengan menambahkan ForeignKey yang akan menciptakan hubungan antara satu produk dan satu pengguna. Dalam views.py, kita juga akan mengubah fungsi create_item dengan menambahkan parameter commit=False untuk mencegah data disimpan langsung ke database. Kemudian, kita akan mengisi bidang user dengan objek User dari request.user untuk menandakan bahwa produk tersebut dimiliki oleh pengguna yang sedang login.
+4. Menampilkan Informasi Pengguna yang Sedang Login:
+Untuk menampilkan detail informasi pengguna yang sedang login seperti nama pengguna (username) dan menerapkan cookies seperti waktu terakhir login pada halaman utama aplikasi, kita akan mengubah fungsi show_main. Kita akan menggunakan Item.objects.filter(user=request.user) untuk menampilkan produk yang terkait dengan pengguna yang sedang login. Selain itu, kita akan menambahkan kode untuk menampilkan waktu terakhir login dengan request.COOKIES['last_login']. Untuk mengatur cookie waktu terakhir login, kita akan mengubah fungsi login_user, dan pada saat logout, kita akan menghapus cookie ini. Kemudian, pada tampilan halaman utama (main.html), kita akan menampilkan waktu terakhir login dengan elemen HTML <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 --- START TUGAS 3 ---
