@@ -106,6 +106,10 @@ Screenshot POSTMAN:
 
 --- END TUGAS 3 ---
 
+
+
+--- START TUGAS 4 ---
+
 Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
 
 UserCreationForm pada Django adalah modul bawaan atau importan yang memfasilitasi formulir pendaftaran pengguna. Modul ini digunakan untuk menghemat waktu dan memastikan validasi data pengguna. Dengan UserCreationForm, kita dapat fokus pada pengembangan fitur khusus aplikasi, tanpa perlu menulis kode pembuatan formulir dari awal. Formulir ini mencakup username, password, dan konfirmasi password. Kelebihannya juga termasuk kemampuan untuk menyesuaikan formulir dengan tambahan menu yang kita diperlukan. UserCreationForm menyimpan data pengguna dengan aman di database sesuai standar keamanan Django. Dengan demikian, UserCreationForm adalah alat yang sangat berguna untuk mengoptimalkan proses pendaftaran pengguna di situs web Django.
@@ -150,4 +154,87 @@ Untuk menghubungkan model Item dengan User, kita akan memodifikasi model Item de
 4. Menampilkan Informasi Pengguna yang Sedang Login:
 Untuk menampilkan detail informasi pengguna yang sedang login seperti nama pengguna (username) dan menerapkan cookies seperti waktu terakhir login pada halaman utama aplikasi, kita akan mengubah fungsi show_main. Kita akan menggunakan Item.objects.filter(user=request.user) untuk menampilkan produk yang terkait dengan pengguna yang sedang login. Selain itu, kita akan menambahkan kode untuk menampilkan waktu terakhir login dengan request.COOKIES['last_login']. Untuk mengatur cookie waktu terakhir login, kita akan mengubah fungsi login_user, dan pada saat logout, kita akan menghapus cookie ini. Kemudian, pada tampilan halaman utama (main.html), kita akan menampilkan waktu terakhir login dengan elemen HTML <h5>Sesi terakhir login: {{ last_login }}</h5>
 
---- START TUGAS 3 ---
+--- END TUGAS 4 ---
+
+
+
+--- START TUGAS 5 ---
+
+**Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+
+1. Universal Selector (*) 
+Dapat digunakan untuk memilih semua elemen dalam dokumen HTML. Biasanya digunakan untuk mengatur properti gaya dasar untuk seluruh elemen, seperti margin atau padding secara umum.
+
+2. Type Selector (Tag Selector)
+Mengidentifikasi semua elemen dengan jenis tag yang sama. Berguna ketika ingin menerapkan gaya umum pada semua elemen dengan jenis tag yang sama.
+
+3. Class Selector (.class)
+Memungkinkan pemilihan elemen berdasarkan nilai atribut class yang diberikan. Berguna untuk mengaplikasikan gaya pada sekelompok elemen yang memiliki karakteristik atau fungsi yang sama, seperti mengubah warna teks pada tombol dengan class "btn".
+
+4. ID Selector (#id)
+Memungkinkan pemilihan elemen berdasarkan nilai atribut id yang unik. Digunakan ketika ingin mengendalikan elemen dengan ID unik atau mengidentifikasi elemen tertentu.
+
+5. Descendant Selector (ancestor descendant)
+Memilih elemen turunan yang berada dalam elemen lain. Digunakan ketika ingin menerapkan gaya pada elemen yang berada dalam struktur atau tata letak tertentu.
+
+6. Child Selector (parent > child)
+Memilih elemen anak langsung dari elemen induk tertentu. Berguna ketika ingin menerapkan gaya hanya pada elemen anak langsung dalam hubungan parent-child.
+
+**Jelaskan HTML5 Tag yang kamu ketahui.**
+
+1. <html>
+Tag untuk menandai awal dan akhir dari dokumen HTML
+
+2. <head>
+Tag untuk menyediakan informasi tentang dokumen HTML
+
+3. <title>
+Tag untuk menentukan judul untuk dokumen HTML
+
+4. <body>
+Tag untuk menandai awal dan akhir dari isi dokumen HTML
+
+5. <h1> - <h6>
+Tag untuk menandai judul dari dokumen HTML dengan ukuran yang berbeda-beda
+
+6. <p>
+Tag untuk menandai paragraf dalam dokumen HTML
+
+7. <a>
+Tag untuk membuat hyperlink ke page lain atau email address
+
+**Jelaskan perbedaan antara margin dan padding.**
+
+Margin adalah ruang di sekitar elemen HTML yang berada di luar batas elemen tersebut. Ini tidak memiliki latar belakang atau warna, membuatnya menjadi zona transparan. Margin digunakan untuk mengatur jarak antara elemen dengan elemen-elemen lain di sekitarnya, memungkinkan pengguna untuk menentukan seberapa jauh elemen tersebut dari elemen-elemen lain di luarnya.
+
+Padding adalah ruang di dalam elemen HTML, terletak di antara batas elemen dan kontennya. Padding memiliki latar belakang dan warna yang sama dengan elemen itu sendiri. Fungsinya adalah untuk mengontrol jarak antara batas elemen dan isi (konten) elemen tersebut. Dengan menggunakan padding, pengguna dapat mengatur dengan presisi jarak antara elemen dan kontennya, mempengaruhi tata letak dan tampilan elemen di halaman web.
+
+**Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+
+Tailwind CSS adalah kerangka kerja (framework) CSS yang sangat fleksibel dan berbasis utility. Dengan Tailwind, pengguna dapat membangun komponen dengan menggabungkan berbagai kelas yang tersedia, memungkinkan kustomisasi yang mendalam dengan mudah. Dalam Tailwind, pengguna dapat mengubah hampir setiap aspek tampilan dengan mengedit file konfigurasi. Meskipun Tailwind menghasilkan kode HTML yang lebih besar karena membutuhkan lebih banyak kelas dalam elemen HTML, ia tetap efisien dalam hal kinerja karena hanya memuat kelas yang diperlukan.
+
+Bootstrap adalah framework CSS yang lebih terstruktur dengan komponen-komponen siap pakai dan gaya bawaan yang lebih kaku. Meskipun lebih sederhana dalam hal kustomisasi, terutama untuk perubahan signifikan dalam gaya komponen, Bootstrap menghasilkan kode HTML yang lebih ringkas karena banyak komponen sudah diatur sebelumnya. Namun, mungkin memiliki ukuran file CSS yang lebih besar karena mengandung semua gaya komponen, bahkan jika tidak semuanya digunakan.
+
+Sebagai kesimpulan, Tailwind CSS menawarkan fleksibilitas tinggi dan kustomisasi yang mendalam dengan memungkinkan pengguna menggabungkan kelas-kelas secara dinamis, sedangkan Bootstrap menyediakan komponen-komponen yang sudah dirancang dengan gaya bawaan yang lebih kaku dan sederhana. Tailwind menghasilkan kode HTML yang lebih besar tetapi lebih efisien dalam kinerja, sementara Bootstrap menghasilkan kode yang lebih ringkas tetapi mungkin memiliki ukuran file CSS yang lebih besar. Pilihan antara keduanya tergantung pada preferensi pengembang dan kebutuhan proyek yang spesifik.
+
+Kapan Menggunakan Tailwind CSS?
+Saat kita ingin memiliki kontrol yang mendalam terhadap desain tampilan
+Saat kita memerlukan fleksibilitas yang tinggi dalam mengatur tampilan elemen-elemen dalam proyek
+Saat kita perlu menghindari penambahan CSS yang tidak digunakan dalam proyek
+
+Kapan Menggunakan Bootstrap?
+Saat kita membutuhkan konsep prototyping cepat dan ingin memanfaatkan komponen yang sudah jadi.
+Saat kita tidak memiliki banyak waktu untuk menyesuaikan desain tampilan secara mendalam
+Saat kita lebih memilih struktur yang lebih kaku dan lebih sedikit keputusan desain yang harus dibuat
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+
+Kustomisasi halaman login, register, dan tambah inventori didesain agar terlihat semenarik mungkin dengan menggunakan berbagai elemen HTML dan kelas Bootstrap. Pada halaman login, konten utama ditempatkan dalam sebuah blok "content" dengan menggunakan elemen HTML. Menggunakan kelas "container mt-5" dari Bootstrap untuk menata elemen-elemen dan memberikan margin atas sebanyak 5 satuan. Tata letak halaman dibuat responsif dengan menggunakan "row" dan "col-md-6". Elemen-elemen dikelompokkan dalam sebuah "card" dengan judul "Login" di dalam bagian "card-header". Tombol "Login" dirancang menarik dengan menggunakan kelas "btn btn-primary" dari Bootstrap, sedangkan pesan kesalahan ditampilkan dalam sebuah div dengan kelas "alert alert-danger" jika ada.
+
+Halaman register juga menggunakan struktur serupa dengan halaman login. Elemen-elemen utama ditempatkan dalam blok "content", ditata menggunakan kelas "container mt-5" untuk memusatkan elemen-elemen dan memberikan margin atas sebanyak 5 satuan. Tata letak halaman disusun responsif dengan menggunakan "row" dan "col-md-6". Elemen-elemen dikelompokkan dalam "card" dengan judul "Register" di bagian "card-header", dan tombol "Register" dibuat menarik dengan menggunakan kelas "btn btn-primary" dari Bootstrap. Pesan kesalahan (jika ada) ditampilkan dalam div dengan kelas "alert alert-danger".
+
+Pada halaman tambah inventori, konten utama ditempatkan dalam blok "content" dan diatur menggunakan kelas "container mt-5" untuk memberikan margin atas sebanyak 5 satuan. Tata letak halaman dirancang responsif dengan menggunakan "row" dan "col-md-6". Elemen-elemen disusun dalam "card" dengan judul "Add New Item" di bagian "card-header", dan tombol "Add Item" dibuat menarik dengan menggunakan kelas "btn btn-success" dari Bootstrap.
+
+Halaman daftar inventori mengadopsi tata letak yang berbeda. Terdapat sebuah "navbar" dengan kelas "navbar" dan atribut "navbar-expand-lg" untuk membuat navbar Bootstrap. Navbar memiliki latar belakang gelap ("bg-dark") dan teks putih ("navbar-dark"). Teks "Welcome, {{ name }}" ditampilkan di tengah navbar dengan menggunakan kelas "mx-auto", sementara tombol "Logout" ditempatkan di sebelah kanan navbar dengan menggunakan kelas "ml-auto". Tautan "Logout" menggunakan tombol Bootstrap dengan kelas "btn btn-outline-light". Konten utama halaman ditempatkan dalam sebuah blok "container mt-4" untuk memberikan margin atas sebanyak 4 satuan.
+
+--- END TUGAS 5 ---

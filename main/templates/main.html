@@ -1,74 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Jualannya Si Agit</h1>
+<div class="container mt-5">
+    <h1 class="display-4">Jualannya Si Agit</h1>
 
-    <h5>Name:</h5>
+    <h5 class="mt-4">Name:</h5>
     <p>{{name}}</p>
 
     <h5>Class:</h5>
     <p>{{class}}</p>
-    
-    <p>Kamu menyimpan {{total_items}} item pada aplikasi ini</p>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Actions</th>
-    </tr>
+    <p class="mt-4">Kamu menyimpan {{total_items}} item pada aplikasi ini</p>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>
-                <a href="{% url 'main:increase_amount' product.id %}">
-                    <button>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td>
+                    <a href="{% url 'main:increase_amount' product.id %}" class="btn btn-success btn-sm">
                         +
-                    </button>
-                </a>
-            
-                <a href="{% url 'main:decrease_amount' product.id %}">
-                    <button>
+                    </a>
+
+                    <a href="{% url 'main:decrease_amount' product.id %}" class="btn btn-warning btn-sm">
                         -
-                    </button>
-                </a>
-    
-                <a href="{% url 'main:edit_product' product.pk %}">
-                    <button>
+                    </a>
+
+                    <a href="{% url 'main:edit_product' product.pk %}" class="btn btn-primary btn-sm">
                         Edit
-                    </button>
-                </a>
+                    </a>
 
-                <a href="{% url 'main:delete_product' product.id %}">
-                    <button>
+                    <a href="{% url 'main:delete_product' product.id %}" class="btn btn-danger btn-sm">
                         Delete
-                    </button>
-                </a>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<br />
+    <h5 class="mt-4">Sesi terakhir login: {{ last_login }}</h5>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<a href="{% url 'main:create_product' %}">
-    <button>
+    <a href="{% url 'main:create_product' %}" class="btn btn-primary mt-3">
         Add New Product
-    </button>
-</a>
+    </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>
+    <a href="{% url 'main:logout' %}" class="btn btn-danger mt-3">
         Logout
-    </button>
-</a>
-
+    </a>
+</div>
 {% endblock content %}
