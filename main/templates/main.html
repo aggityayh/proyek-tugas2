@@ -97,6 +97,10 @@
                             <label for="description" class="col-form-label">Description:</label>
                             <textarea class="form-control" id="description" name="description"></textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -123,73 +127,73 @@
             const products = await getProducts();
             const itemCountElement = document.getElementById("item-count");
 
-        itemCountElement.textContent = products.length;
-            let htmlString = `<table id="product_table" class="table table-bordered table-striped">
-                <thead>
+            itemCountElement.textContent = products.length;
+                let htmlString = `<table id="product_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                        
+                
+            products.forEach((item) => {
+                htmlString += `
                     <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>`;
-                    
+                        <td>${item.fields.name}</td>
+                        <td>${item.fields.price}</td>
+                        <td>${item.fields.description}</td>
+                        <td class="action-column">
+                            <div class="btn-group" role="group">
+                                <a href="increase_amount/${item.pk}/">
+                                    <button type="submit" class="btn custom-btn1">+</button>
+                                </a>
+                                <a href="decrease_amount/${item.pk}/">
+                                    <button type="submit" class="btn custom-btn2">-</button>
+                                </a>
+                                <a href="edit-product/${item.pk}">
+                                    <button type="submit" class="btn custom-btn3">Edit</button>
+                                </a>
+                                <button class="btn custom-btn4" data-url="{% url 'main:delete_product_ajax' 123 %}" onclick="deleteProduct(this, ${item.pk})">Delete</button>
+                            </div>
+                        </td>
+                    </tr>`;
+            });
+
+            htmlString += `</tbody></table>`;
             
-        products.forEach((item) => {
-            htmlString += `
-                <tr>
-                    <td>${item.fields.name}</td>
-                    <td>${item.fields.price}</td>
-                    <td>${item.fields.description}</td>
-                    <td class="action-column">
-                        <div class="btn-group" role="group">
-                            <a href="increase_amount/${item.pk}/">
-                                <button type="submit" class="btn custom-btn1">+</button>
-                            </a>
-                            <a href="decrease_amount/${item.pk}/">
-                                <button type="submit" class="btn custom-btn2">-</button>
-                            </a>
-                            <a href="edit-product/${item.pk}">
-                                <button type="submit" class="btn custom-btn3">Edit</button>
-                            </a>
-                            <button class="btn custom-btn4" data-url="{% url 'main:delete_product_ajax' 123 %}" onclick="deleteProduct(this, ${item.pk})">Delete</button>
-                        </div>
-                    </td>
-                </tr>`;
-        });
+            document.getElementById("product_table").innerHTML = htmlString;
 
-        htmlString += `</tbody></table>`;
-        
-        document.getElementById("product_table").innerHTML = htmlString;
+            const cardContainer = document.getElementById("product_cards");
 
-        const cardContainer = document.getElementById("product_cards");
+            cardContainer.innerHTML = "";
 
-        cardContainer.innerHTML = "";
+            products.forEach((item) => {
+                // Create a card for each item
+                const card = document.createElement("div");
+                card.className = "product-card";
 
-        products.forEach((item) => {
-            // Create a card for each item
-            const card = document.createElement("div");
-            card.className = "product-card";
-
-            card.innerHTML = `
-            <h3>${item.fields.name}</h3>
-            <p><strong>Price:</strong> $${item.fields.price}</p>
-            <p><strong>Description:</strong> ${item.fields.description}</p>
-            <div class="action-buttons">
-                <div class="price-buttons">
-                    <a href="increase_amount/${item.pk}" class="btn custom-btn1">+</a>
-                    <a href="decrease_amount/${item.pk}" class="btn custom-btn2">-</a>
+                card.innerHTML = `
+                <h3>${item.fields.name}</h3>
+                <p><strong>Price:</strong> $${item.fields.price}</p>
+                <p><strong>Description:</strong> ${item.fields.description}</p>
+                <div class="action-buttons">
+                    <div class="price-buttons">
+                        <a href="increase_amount/${item.pk}" class="btn custom-btn1">+</a>
+                        <a href="decrease_amount/${item.pk}" class="btn custom-btn2">-</a>
+                    </div>
+                    <div class="edit-delete-buttons">
+                        <a href="edit_product/${item.pk}" class="btn custom-btn3">Edit</a>
+                        <button class="btn custom-btn4" data-url="{% url 'main:delete_product_ajax' 123 %}" onclick="deleteProduct(this, ${item.pk})">Delete</button>
+                    </div>
                 </div>
-                <div class="edit-delete-buttons">
-                    <a href="edit_product/${item.pk}" class="btn custom-btn3">Edit</a>
-                    <button class="btn custom-btn4" data-url="{% url 'main:delete_product_ajax' 123 %}" onclick="deleteProduct(this, ${item.pk})">Delete</button>
-                </div>
-            </div>
-            `;
+                `;
 
-            cardContainer.appendChild(card);
-        });
+                cardContainer.appendChild(card);
+            });
     }
 
     function deleteProduct(button, id) {
