@@ -3,17 +3,27 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body {
+        background-color: #40688f;
+    }
+</style>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header"><h1 class="text-center">Edit Product</h1></div>
+                <div class="card-header">
+                    <h1 class="text-center">Edit Product</h1>
+                </div>
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <div class="d-grid mt-3">
-                            <button class="btn btn-primary" type="submit">Edit Product</button>
+                        <table class="table">
+                            {{ form.as_table }}
+                        </table>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Edit Product</button>
                         </div>
                     </form>
                 </div>

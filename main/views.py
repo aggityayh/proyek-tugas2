@@ -3,7 +3,7 @@ from django.shortcuts import render
 from main.models import Product
 from main.forms import ProductForm
 
-from django.http import HttpResponseRedirect
+from django.http import *
 from main.forms import ProductForm
 from django.urls import reverse
 
@@ -22,6 +22,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.shortcuts import get_object_or_404
+
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login')
 def show_main(request):
@@ -139,3 +141,29 @@ def edit_product(request, id):
 
     context = {'form': form}
     return render(request, "edit_product.html", context)
+
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_product_ajax(request, id):
+    if request.method == 'DELETE':
+        product = get_object_or_404(Product, pk=id)
+        product.delete()
+        return HttpResponse(b"DELETED", status=204)
+    return HttpResponseNotFound()

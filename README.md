@@ -238,3 +238,37 @@ Pada halaman tambah inventori, konten utama ditempatkan dalam blok "content" dan
 Halaman daftar inventori mengadopsi tata letak yang berbeda. Terdapat sebuah "navbar" dengan kelas "navbar" dan atribut "navbar-expand-lg" untuk membuat navbar Bootstrap. Navbar memiliki latar belakang gelap ("bg-dark") dan teks putih ("navbar-dark"). Teks "Welcome, {{ name }}" ditampilkan di tengah navbar dengan menggunakan kelas "mx-auto", sementara tombol "Logout" ditempatkan di sebelah kanan navbar dengan menggunakan kelas "ml-auto". Tautan "Logout" menggunakan tombol Bootstrap dengan kelas "btn btn-outline-light". Konten utama halaman ditempatkan dalam sebuah blok "container mt-4" untuk memberikan margin atas sebanyak 4 satuan.
 
 --- END TUGAS 5 ---
+
+--- START TUGAS 6 ---
+
+**Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+
+Pemrograman synchronous melibatkan eksekusi tugas-tugas satu per satu secara berurutan. Artinya, setiap tugas harus selesai sebelum tugas berikutnya dapat dimulai. Meskipun pendekatan ini membuat program lebih mudah dipahami, namun dapat membuat program terasa lambat dan tidak responsif jika tugas-tugas memakan waktu lama.
+
+Pemrograman asynchronous, di sisi lain, memungkinkan tugas-tugas dieksekusi secara bersamaan, tanpa harus menunggu satu sama lain. Hal ini membuat program lebih responsif dan efisien karena tugas-tugas yang memakan waktu tidak menghentikan eksekusi tugas-tugas lainnya. Pemrograman asynchronous sangat bermanfaat untuk kegiatan seperti pengunduhan file, permintaan jaringan, atau operasi I/O yang memakan waktu.
+
+**Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+
+Paradigma Event-Driven Programming adalah cara pendekatan dalam pemrograman di mana program menanggapi peristiwa yang terjadi, seperti klik mouse, input pengguna, atau permintaan jaringan. Program merespons peristiwa tersebut dengan menjalankan kode yang telah ditetapkan sebelumnya untuk menangani peristiwa tersebut. Sebagai contoh, ketika menggunakan AJAX dalam JavaScript untuk mengirim permintaan HTTP asinkron, fungsi-fungsi spesifik ditetapkan untuk dijalankan ketika permintaan berhasil, gagal, atau ketika data dari server diterima. Fungsi-fungsi ini dijalankan sebagai respons terhadap peristiwa-peristiwa yang terjadi selama proses permintaan HTTP.
+
+**Jelaskan penerapan asynchronous programming pada AJAX.**
+
+Asynchronous Programming diterapkan dalam AJAX (Asynchronous JavaScript and XML) dengan memungkinkan kita membuat permintaan tanpa harus menunggu respon dari server. Dalam AJAX, setelah permintaan dikirim, kita dapat melanjutkan menjalankan kode JavaScript lainnya tanpa harus berhenti menunggu respons. Kemudian, ketika respons dari server diterima, kita dapat menentukan fungsi callback yang akan mengelola data tersebut.
+
+**Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+
+Fetch API merupakan antarmuka pemrograman aplikasi (API) bawaan JavaScript yang memungkinkan kita membuat permintaan HTTP asinkron dengan sintaks modern dan kuat. Dibandingkan dengan pendahulunya, yaitu XMLHttpRequest, Fetch API mendukung konsep Promise, memungkinkan penulisan kode asynchronous dengan lebih jelas dan ekspresif. API ini juga lebih ringan dan fleksibel jika dibandingkan dengan jQuery.
+
+Sementara itu, jQuery adalah sebuah perpustakaan JavaScript populer yang digunakan untuk manipulasi DOM dan komunikasi dengan server melalui AJAX. jQuery telah menyediakan dukungan untuk AJAX dalam waktu yang lama dan memiliki sejumlah fungsi yang memudahkan penggunaan AJAX. Namun, jQuery memiliki ukuran yang cukup besar dan mungkin tidak diperlukan jika hanya membutuhkan fitur-fitur khusus AJAX.
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+
+- Untuk menggunakan AJAX GET, saya perlu membuat sebuah fungsi yang memungkinkan pengambilan data produk yang telah tersimpan. Fungsi ini kemudian saya implementasikan pada tabel yang ada di halaman main.html. Dengan demikian, pengambilan data dari tabel akan dilakukan melalui AJAX, yang nantinya akan terhubung dengan metode POST.
+
+- Pada sisi AJAX POST, diperlukan fungsi baru bernama add_product untuk menambahkan produk ke dalam database. Penting juga untuk menambahkan fungsi add_product_ajax agar AJAX dapat berjalan dengan baik. Pada halaman main.html, perlu saya tambahkan sebuah modal sebagai jendela pop-up untuk mengisi data produk. Selain itu, saya perlu menulis script agar halaman dapat otomatis memperbarui dirinya sendiri setelah modal diisi.
+
+- Selain pengaturan di frontend, saya juga perlu membuat fungsi baru di bagian views untuk menangani permintaan AJAX. Pastikan untuk menghubungkan fungsi tersebut melalui URL agar program dapat berjalan dengan lancar.
+
+- Setelah semua konfigurasi selesai, saya dapat menjalankan perintah "python manage.py collectstatic" di command prompt (cmd). Dengan perintah ini, Django akan mengumpulkan semua file statis aplikasi dan menyimpannya dalam sebuah folder static. Dengan demikian, aplikasi saya akan memiliki akses yang lebih efisien terhadap file-file statis yang diperlukan.
+
+--- END TUGAS 6 ---
