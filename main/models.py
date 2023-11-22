@@ -7,3 +7,4 @@ class Product(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.IntegerField()
+    
